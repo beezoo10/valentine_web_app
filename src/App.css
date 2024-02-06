@@ -6,11 +6,42 @@
   height: 80vh;
 }
 
+img {
+  padding: 0px 0px 1em 0px;
+}
+
 button {
   padding: 10px 20px;
   font-size: 1em;
 }
 
-text {
-  padding: 20px;
+.text {
+  display: flex;
+  text-align: center;
+}
+
+.buttonContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+button {
+  color: white;
+  border-radius: 15px;
+}
+
+.yesButton {
+  background-color: rgb(108, 189, 108);
+}
+
+.yesButton:hover {
+  background-color: rgb(100, 173, 100);
+}
+
+.noButton {
+  background-color: rgb(255, 93, 93);
+}
+
+.noButton:hover {
+  background-color: rgb(220, 81, 81);
 }

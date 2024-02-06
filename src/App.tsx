@@ -1,8 +1,11 @@
 import { useState } from "react";
 import "./App.css";
 
+import confetti from "https://cdn.skypack.dev/canvas-confetti";
+
 const saidNo = [
   "no",
+  "WHAT",
   "excuse me?? :(",
   "really?",
   "i thought we had something :(",
@@ -15,6 +18,15 @@ const saidNo = [
   "damn i can't believe you still clicked no",
   "okay... well i respect your decision :(",
   "DAMN STOP CLICKING, I GET IT",
+  "please :(",
+  "AH",
+  "you're breaking my heart",
+  "ouchie",
+  "please stop",
+  "okay please this isn't funny anymore",
+  "but alex :(",
+  "please say sike",
+  "PLEASE SAY SIKE",
 ];
 
 const imageArr = [
@@ -35,42 +47,54 @@ const imageArr = [
 const textArr = [
   {
     id: "askingText",
-    src: "Alex, will you be by valentine this year?",
+    src: "alex, will you be by valentine this year?",
   },
   {
     id: "heSaidYes",
-    src: "WAHOOOOOOOO wait really?! omg thank you THANK YOU EEEEEEEEE",
+    src: "WAHOOOOOO wait really?! omg YAY EEEEEEEEE",
+  },
+  {
+    id: "heSaidYes2",
+    src: "happy valentine's day!!",
   },
 ];
 
 function App() {
-  // increments no counter
+  // hook for incrementing no counter
   const [noCount, setNoCount] = useState(0);
-  // for conditionally displaying images
+  // hook for checking if yes was pressed
+  const [yesPressed, setYesPressed] = useState(false);
+  // hook for conditionally displaying images
   const [displayImg, setDisplayImg] = useState({
     askingCat: true,
     cryingCat: false,
     yayCatDog: false,
   });
-  // for conditionally displaying text
+  // hook for conditionally displaying text
   const [displayText, setDisplayText] = useState({
     askingText: true,
     heSaidYes: false,
   });
-  // for size of the yes button
-  const yesButtonSize = noCount * 20;
-  // increment no count by 1
+  // for size of the yes button (yousuf figured out that the initial count was 0 so it wasn't showing up)
+  const yesButtonSize = noCount * 20 ? noCount * 20 : 18;
+  // increment no count by 1 and set to crying cat
   function handleNoClick() {
     // setNoPressed(true);
+    setNoCount(noCount + 1);
     setDisplayImg({
       askingCat: false,
       cryingCat: true,
       yayCatDog: false,
     });
-    setNoCount(noCount + 1);
   }
+  // sets display text to yes, and display img to yay cat dog
   function handleYesClick() {
-    // setYesPressed(true);
+    confetti();
+
+    window.addEventListener("click", () => {
+      confetti();
+    });
+
     setDisplayText({
       askingText: false,
       heSaidYes: true,
@@ -80,14 +104,12 @@ function App() {
       cryingCat: false,
       yayCatDog: true,
     });
+    setYesPressed(true);
   }
-  // grabs text for no phrases, returns either the current phrase or the last one (?)
+  // grabs text for no phrases, returns either the current phrase or the last if at the end
   function getNoText() {
     return saidNo[Math.min(noCount, saidNo.length - 1)];
   }
-
-  // put this back in the yes button --> style={{ fontSize: yesButtonSize }}
-
   return (
     <div className="valContainer">
       <div className="gif">
@@ -97,20 +119,27 @@ function App() {
       </div>
       <div className="text">
         {displayText.askingText && <p>{textArr[0].src}</p>}
-        {displayText.heSaidYes && <p>{textArr[1].src}</p>}
+        {displayText.heSaidYes && (
+          <div>
+            <p>{textArr[1].src}</p>
+            <p>{textArr[2].src}</p>
+          </div>
+        )}
       </div>
-      <div>
-        <button
-          className="yesButton"
-          style={{ fontSize: yesButtonSize }}
-          onClick={handleYesClick}
-        >
-          yes!
-        </button>
-        <button className="noButton" onClick={handleNoClick}>
-          {getNoText()}
-        </button>
-      </div>
+      {!yesPressed && (
+        <div className="buttonContainer">
+          <button
+            className="yesButton"
+            style={{ fontSize: yesButtonSize }}
+            onClick={handleYesClick}
+          >
+            yes!
+          </button>
+          <button className="noButton" onClick={handleNoClick}>
+            {getNoText()}
+          </button>
+        </div>
+      )}
     </div>
   );
 }

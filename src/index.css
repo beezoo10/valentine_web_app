@@ -1,0 +1,15 @@
+@import url("https://fonts.googleapis.com/css2?family=Dekko&family=Shantell+Sans:wght@300&display=swap");
+
+body {
+  font-family: "Shantell Sans", cursive;
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.719),
+      rgba(255, 255, 255, 0.719)
+    ),
+    url("/src/assets/tile_hearts.jpg");
+  background-repeat: repeat;
+}
+
+button {
+  font-family: "Shantell Sans", cursive;
+}
