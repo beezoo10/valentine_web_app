@@ -67,7 +67,9 @@ function App() {
       <img src={imageArr[0].src} />
       <div className="text">{textArr[0].src}</div>
       <div>
-        <button className="yesButton">yes!</button>
+        <button className="yesButton" style={{ fontSize: yesButtonSize }}>
+          yes!
+        </button>
         <button className="noButton" onClick={handleNoClick}>
           {getNoText()}
         </button>
