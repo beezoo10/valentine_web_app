@@ -12,7 +12,6 @@ const saidNo = [
   "okay... last chance",
   "ARE YOU SERIOUS",
   "okay ACTUALLY last chance",
-  "(bc these phrases are gonna loop)",
   "damn i can't believe you still clicked no",
   "okay... well i respect your decision :(",
   "DAMN STOP CLICKING, I GET IT",
@@ -25,7 +24,7 @@ const imageArr = [
   },
   {
     id: "cryingCat",
-    src: "https://media.tenor.com/5cRtQ5i5HmQAAAAi/tonton-tonton.gif",
+    src: "https://media.tenor.com/6Vt_LuPoLUoAAAAi/gatotriste.gif",
   },
   {
     id: "yayCatDog",
@@ -45,15 +44,42 @@ const textArr = [
 ];
 
 function App() {
+  // increments no counter
   const [noCount, setNoCount] = useState(0);
-  const [yesPressed, setYesPressed] = useState(false);
-  const [noPressed, setNoPressed] = useState(false);
+  // for conditionally displaying images
+  const [displayImg, setDisplayImg] = useState({
+    askingCat: true,
+    cryingCat: false,
+    yayCatDog: false,
+  });
+  // for conditionally displaying text
+  const [displayText, setDisplayText] = useState({
+    askingText: true,
+    heSaidYes: false,
+  });
   // for size of the yes button
   const yesButtonSize = noCount * 20;
   // increment no count by 1
   function handleNoClick() {
+    // setNoPressed(true);
+    setDisplayImg({
+      askingCat: false,
+      cryingCat: true,
+      yayCatDog: false,
+    });
     setNoCount(noCount + 1);
-    setNoPressed(true);
+  }
+  function handleYesClick() {
+    // setYesPressed(true);
+    setDisplayText({
+      askingText: false,
+      heSaidYes: true,
+    });
+    setDisplayImg({
+      askingCat: false,
+      cryingCat: false,
+      yayCatDog: true,
+    });
   }
   // grabs text for no phrases, returns either the current phrase or the last one (?)
   function getNoText() {
@@ -64,10 +90,21 @@ function App() {
 
   return (
     <div className="valContainer">
-      <img src={imageArr[0].src} />
-      <div className="text">{textArr[0].src}</div>
+      <div className="gif">
+        {displayImg.askingCat && <img src={imageArr[0].src} width="300px" />}
+        {displayImg.cryingCat && <img src={imageArr[1].src} width="300px" />}
+        {displayImg.yayCatDog && <img src={imageArr[2].src} width="300px" />}
+      </div>
+      <div className="text">
+        {displayText.askingText && <p>{textArr[0].src}</p>}
+        {displayText.heSaidYes && <p>{textArr[1].src}</p>}
+      </div>
       <div>
-        <button className="yesButton" style={{ fontSize: yesButtonSize }}>
+        <button
+          className="yesButton"
+          style={{ fontSize: yesButtonSize }}
+          onClick={handleYesClick}
+        >
           yes!
         </button>
         <button className="noButton" onClick={handleNoClick}>
