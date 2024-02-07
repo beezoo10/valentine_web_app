@@ -6,8 +6,16 @@
   height: 80vh;
 }
 
+.buttonAndTextContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 img {
   padding: 0px 0px 1em 0px;
+  /* position: absolute; */
 }
 
 button {
@@ -28,6 +36,7 @@ button {
 button {
   color: white;
   border-radius: 15px;
+  margin: 5px;
 }
 
 .yesButton {

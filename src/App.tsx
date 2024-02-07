@@ -76,10 +76,9 @@ function App() {
     heSaidYes: false,
   });
   // for size of the yes button (yousuf figured out that the initial count was 0 so it wasn't showing up)
-  const yesButtonSize = noCount * 20 ? noCount * 20 : 18;
+  const yesButtonSize = noCount * 15 ? noCount * 15 : 15;
   // increment no count by 1 and set to crying cat
   function handleNoClick() {
-    // setNoPressed(true);
     setNoCount(noCount + 1);
     setDisplayImg({
       askingCat: false,
@@ -113,18 +112,20 @@ function App() {
   return (
     <div className="valContainer">
       <div className="gif">
-        {displayImg.askingCat && <img src={imageArr[0].src} width="300px" />}
-        {displayImg.cryingCat && <img src={imageArr[1].src} width="300px" />}
-        {displayImg.yayCatDog && <img src={imageArr[2].src} width="300px" />}
+        {displayImg.askingCat && <img src={imageArr[0].src} height="300px" />}
+        {displayImg.cryingCat && <img src={imageArr[1].src} height="300px" />}
+        {displayImg.yayCatDog && <img src={imageArr[2].src} height="300px" />}
       </div>
-      <div className="text">
-        {displayText.askingText && <p>{textArr[0].src}</p>}
-        {displayText.heSaidYes && (
-          <div>
-            <p>{textArr[1].src}</p>
-            <p>{textArr[2].src}</p>
-          </div>
-        )}
+      <div className="buttonAndTextContainer">
+        <div className="text">
+          {displayText.askingText && <p>{textArr[0].src}</p>}
+          {displayText.heSaidYes && (
+            <div>
+              <p>{textArr[1].src}</p>
+              <p>{textArr[2].src}</p>
+            </div>
+          )}
+        </div>
       </div>
       {!yesPressed && (
         <div className="buttonContainer">
