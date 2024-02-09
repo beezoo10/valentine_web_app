@@ -3,11 +3,13 @@
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  height: 80vh;
+  /* align-items: 40vh; */
+  margin-top: 8vh;
 }
 
 img {
   padding: 0px 0px 1em 0px;
+  /* align-items: flex-start; */
 }
 
 button {
@@ -28,6 +30,7 @@ button {
 button {
   color: white;
   border-radius: 15px;
+  margin: 5px;
 }
 
 .yesButton {
@@ -44,4 +47,10 @@ button {
 
 .noButton:hover {
   background-color: rgb(220, 81, 81);
+}
+
+.happyValentines {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

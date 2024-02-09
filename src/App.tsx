@@ -4,19 +4,19 @@ import "./App.css";
 import confetti from "https://cdn.skypack.dev/canvas-confetti";
 
 const saidNo = [
-  "no",
   "WHAT",
   "excuse me?? :(",
-  "really?",
   "i thought we had something :(",
   "BUT ALEX WHY",
-  "how do i change your mind",
-  "REALLY really?",
-  "okay... last chance",
+  "can i change your mind",
+  "could you... be convinced?",
+  "okay... last chance, do you want to be my valentine?",
   "ARE YOU SERIOUS",
   "okay ACTUALLY last chance",
   "damn i can't believe you still clicked no",
+  "that's messed up",
   "okay... well i respect your decision :(",
+  "ACTUALLY, I DON'T (in this context)",
   "DAMN STOP CLICKING, I GET IT",
   "please :(",
   "AH",
@@ -27,6 +27,20 @@ const saidNo = [
   "but alex :(",
   "please say sike",
   "PLEASE SAY SIKE",
+  "i'm begging you pookie please",
+  "wow i even called you pookie",
+  "that was embarassing for me you know",
+  "okay you can click yes now",
+  "hello?? CLICK YES",
+  "there's literally no more text after this",
+  "wow this is how game devs must feel typing out achievements for obnoxious players",
+  "seriously click yes now or i'll fight you",
+  "there's no more pookie",
+
+  "ARE YOU HAPPY NOW",
+  "wow, can't be pleased",
+  "okay final time",
+  "will you, alex, be my valentine?",
 ];
 
 const imageArr = [
@@ -74,17 +88,22 @@ function App() {
   const [displayText, setDisplayText] = useState({
     askingText: true,
     heSaidYes: false,
+    heSaidNo: false,
   });
   // for size of the yes button (yousuf figured out that the initial count was 0 so it wasn't showing up)
-  const yesButtonSize = noCount * 20 ? noCount * 20 : 18;
+  const yesButtonSize = noCount * 15 ? noCount * 15 : 15;
   // increment no count by 1 and set to crying cat
   function handleNoClick() {
-    // setNoPressed(true);
     setNoCount(noCount + 1);
     setDisplayImg({
       askingCat: false,
       cryingCat: true,
       yayCatDog: false,
+    });
+    setDisplayText({
+      askingText: false,
+      heSaidYes: false,
+      heSaidNo: true,
     });
   }
   // sets display text to yes, and display img to yay cat dog
@@ -98,31 +117,39 @@ function App() {
     setDisplayText({
       askingText: false,
       heSaidYes: true,
+      heSaidNo: false,
     });
+
     setDisplayImg({
       askingCat: false,
       cryingCat: false,
       yayCatDog: true,
     });
+
     setYesPressed(true);
   }
   // grabs text for no phrases, returns either the current phrase or the last if at the end
   function getNoText() {
+    console.log(noCount);
     return saidNo[Math.min(noCount, saidNo.length - 1)];
   }
   return (
     <div className="valContainer">
       <div className="gif">
-        {displayImg.askingCat && <img src={imageArr[0].src} width="300px" />}
-        {displayImg.cryingCat && <img src={imageArr[1].src} width="300px" />}
-        {displayImg.yayCatDog && <img src={imageArr[2].src} width="300px" />}
+        {displayImg.askingCat && <img src={imageArr[0].src} height="300px" />}
+        {displayImg.cryingCat && <img src={imageArr[1].src} height="300px" />}
+        {displayImg.yayCatDog && <img src={imageArr[2].src} height="300px" />}
       </div>
       <div className="text">
         {displayText.askingText && <p>{textArr[0].src}</p>}
+        {displayText.heSaidNo && <p>{getNoText()}</p>}
         {displayText.heSaidYes && (
           <div>
             <p>{textArr[1].src}</p>
-            <p>{textArr[2].src}</p>
+            <p className="happyValentines">
+              {textArr[2].src}
+              <img src="src/assets/heart.png" width="10px" />
+            </p>
           </div>
         )}
       </div>
@@ -136,7 +163,7 @@ function App() {
             yes!
           </button>
           <button className="noButton" onClick={handleNoClick}>
-            {getNoText()}
+            no
           </button>
         </div>
       )}
