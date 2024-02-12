@@ -36,10 +36,11 @@ const saidNo = [
   "wow this is how game devs must feel typing out achievements for obnoxious players",
   "seriously click yes now or i'll fight you",
   "there's no more pookie",
-
-  "ARE YOU HAPPY NOW",
-  "wow, can't be pleased",
+  "okay, what about this",
+  "i had to learn how to animate that, are you happy now",
+  "wow, tough crowd",
   "okay final time",
+  "i'm serious",
   "will you, alex, be my valentine?",
 ];
 
@@ -61,7 +62,7 @@ const imageArr = [
 const textArr = [
   {
     id: "askingText",
-    src: "alex, will you be by valentine this year?",
+    src: "alex, will you be my valentine this year?",
   },
   {
     id: "heSaidYes",
@@ -70,6 +71,10 @@ const textArr = [
   {
     id: "heSaidYes2",
     src: "happy valentine's day!!",
+  },
+  {
+    id: "heSaidYes3",
+    src: "mwah mwah mwah - brisa",
   },
 ];
 
@@ -90,9 +95,11 @@ function App() {
     heSaidYes: false,
     heSaidNo: false,
   });
-  // for size of the yes button (yousuf figured out that the initial count was 0 so it wasn't showing up)
+  // for the star
+  const [displayStar, setDisplayStar] = useState(false);
+  // for size of the yes button
   const yesButtonSize = noCount * 15 ? noCount * 15 : 15;
-  // increment no count by 1 and set to crying cat
+  // increment no count by 1 and set to crying cat, and change text
   function handleNoClick() {
     setNoCount(noCount + 1);
     setDisplayImg({
@@ -105,8 +112,13 @@ function App() {
       heSaidYes: false,
       heSaidNo: true,
     });
+    if (noCount === 31) {
+      setDisplayStar(true);
+    } else if (noCount === 32) {
+      setDisplayStar(false);
+    }
   }
-  // sets display text to yes, and display img to yay cat dog
+  // sets display text to yes message, and display img to yay cat dog, also triggers confetti
   function handleYesClick() {
     confetti();
 
@@ -133,8 +145,19 @@ function App() {
     console.log(noCount);
     return saidNo[Math.min(noCount, saidNo.length - 1)];
   }
+  // // displays star achievement at certain no count
+  // function sendStar() {
+  //   setDisplayStar(true);
+  //   return <img src="src/assets/star.png" height="200px" />;
+  // }
+
   return (
     <div className="valContainer">
+      {displayStar && (
+        <div className="star">
+          <img src="src/assets/star.png" height="200px" />
+        </div>
+      )}
       <div className="gif">
         {displayImg.askingCat && <img src={imageArr[0].src} height="300px" />}
         {displayImg.cryingCat && <img src={imageArr[1].src} height="300px" />}
@@ -146,9 +169,14 @@ function App() {
         {displayText.heSaidYes && (
           <div>
             <p>{textArr[1].src}</p>
-            <p className="happyValentines">
-              {textArr[2].src}
-              <img src="src/assets/heart.png" width="10px" />
+            <p className="happyValentines">{textArr[2].src}</p>
+            <p>
+              {textArr[3].src}
+              <img
+                className="miniHeart"
+                src="src/assets/heart.png"
+                width="10px"
+              />
             </p>
           </div>
         )}

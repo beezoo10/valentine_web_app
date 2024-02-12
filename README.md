@@ -1,30 +1,11 @@
-# React + TypeScript + Vite
+## Happy Valentine's Day!
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+I made a web app to ask (my now boyfriend) Alex if he would be my valentine! I used **React**, **Vite**, **JavaScript**, **HTML** and **CSS**.
 
-Currently, two official plugins are available:
+You can view it live [here](https://hpd8hd-5173.csb.app/)!
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Inspiration taken from [mewtru](https://www.tiktok.com/@mewtru/video/7331103574623096107?is_from_webapp=1&sender_device=pc&web_id=7205114281700165166)'s TikTok channel.
 
-## Expanding the ESLint configuration
+This was a fun project that took me a couple of hours. I added onto the original idea by conditionally rendering GIFs and text (via **React Hooks**) based on which button was pressed, changing the "no" statements from being on the no button to a separate line, and doing some personal styling. I also implemented a fun little easter egg (see if you can spot it), and confetti! 🎉
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: "latest",
-    sourceType: "module",
-    project: ["./tsconfig.json", "./tsconfig.node.json"],
-    tsconfigRootDir: __dirname,
-  },
-};
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Thank you for taking the time to look at my little project - wishing you a Happy Valentine's Day!

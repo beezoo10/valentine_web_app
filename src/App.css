@@ -7,7 +7,7 @@
   margin-top: 8vh;
 }
 
-img {
+.gif {
   padding: 0px 0px 1em 0px;
   /* align-items: flex-start; */
 }
@@ -20,17 +20,25 @@ button {
 .text {
   display: flex;
   text-align: center;
+  margin: 1em 1.5em 0em 1.5em;
+  background-color: rgba(255, 246, 246, 0.932);
+  border-radius: 15px;
+  padding: 0em 1em 0em 1em;
+  box-shadow: 0px 0cm 5px rgba(107, 61, 32, 0.436);
 }
 
 .buttonContainer {
   display: flex;
   flex-direction: column;
+  margin-top: 1em;
 }
 
 button {
   color: white;
   border-radius: 15px;
   margin: 5px;
+  border: none;
+  box-shadow: 0px 0cm 5px rgba(107, 61, 32, 0.436);
 }
 
 .yesButton {
@@ -49,8 +57,56 @@ button {
   background-color: rgb(220, 81, 81);
 }
 
+.star > * {
+  animation: fly 15s linear infinite;
+  top: 0;
+  left: 0;
+  position: fixed;
+  z-index: 999;
+  pointer-events: none;
+}
+@keyframes fly {
+  0% {
+    transform: translate(-200%, 110vh) rotateZ(0deg);
+  }
+
+  12.5% {
+    transform: translate(120vw, -120%) rotateZ(20deg);
+  }
+
+  25% {
+    transform: translate(-200%, 50vh) scale(2.75) rotateZ(-20deg);
+  }
+
+  37.5% {
+    transform: translate(-200%, -120%) rotateZ(-40deg);
+  }
+
+  50% {
+    transform: translate(100vw, 50vh) rotateZ(0deg);
+  }
+
+  62.5% {
+    transform: translate(20vw, 100vh) rotateZ(20deg);
+  }
+  75% {
+    transform: translate(200%, 100vh) rotateZ(20deg);
+  }
+  87.5% {
+    transform: translate(50vw, -200%) scale(1.75) rotateZ(20deg);
+  }
+
+  100% {
+    transform: translate(-200%, 110vh) rotateZ(0deg);
+  }
+}
+
 .happyValentines {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.miniHeart {
+  margin-left: 0.4em;
 }
