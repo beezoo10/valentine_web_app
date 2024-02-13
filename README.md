@@ -1,4 +1,4 @@
-## Happy Valentine's Day!
+## Happy Valentine's Day! ❤️
 
 I made a web app to ask (my now boyfriend) Alex if he would be my valentine! I used **React**, **Vite**, **JavaScript**, **HTML** and **CSS**, along with **CodeSandbox** to deploy it.
 
