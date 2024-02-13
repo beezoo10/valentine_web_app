@@ -3,13 +3,11 @@
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  /* align-items: 40vh; */
   margin-top: 8vh;
 }
 
 .gif {
   padding: 0px 0px 1em 0px;
-  /* align-items: flex-start; */
 }
 
 button {

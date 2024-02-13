@@ -145,11 +145,6 @@ function App() {
     console.log(noCount);
     return saidNo[Math.min(noCount, saidNo.length - 1)];
   }
-  // // displays star achievement at certain no count
-  // function sendStar() {
-  //   setDisplayStar(true);
-  //   return <img src="src/assets/star.png" height="200px" />;
-  // }
 
   return (
     <div className="valContainer">
