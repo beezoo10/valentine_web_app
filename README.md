@@ -2,7 +2,7 @@
 
 I made a web app to ask (my now boyfriend) Alex if he would be my valentine! I used **React**, **Vite**, **JavaScript**, **HTML** and **CSS**, along with **CodeSandbox** to deploy it.
 
-You can view it live [here](https://7mhk5t-5173.csb.app/)!
+You can view it live [here](https://7mhk5t-5173.csb.app/)! If the server's off, feel free to submit a PR and let me know to turn it on!
 
 Inspiration taken from [mewtru](https://www.tiktok.com/@mewtru/video/7331103574623096107?is_from_webapp=1&sender_device=pc&web_id=7205114281700165166)'s TikTok channel.
 
